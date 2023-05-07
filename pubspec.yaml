@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   device_preview: ^1.1.0
   intl: 
+  flutter_expandable_fab: ^1.7.1
 
 dev_dependencies:
   flutter_test:

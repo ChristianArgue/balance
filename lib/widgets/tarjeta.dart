@@ -6,6 +6,7 @@ class TarjetaPage extends StatelessWidget {
 
   final now = DateTime.now();
   final formatter = DateFormat('EEEE, d MMMM yyyy', 'es');
+  final double total = 1000.00;
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,7 @@ class TarjetaPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 const Text(
                   'Balance Total',
                   style: TextStyle(
@@ -44,12 +43,10 @@ class TarjetaPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Text(
-                  '\$ 1000',
-                  style: TextStyle(
+                const SizedBox(height: 30),
+                Text(
+                  '\$ ${total.toStringAsFixed(2)}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                     decoration: TextDecoration.none,

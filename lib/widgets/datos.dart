@@ -20,9 +20,7 @@ class DatosPage extends StatelessWidget {
               ),
               child: const _Ingreso(),
             ),
-            const SizedBox(
-              width: 15,
-            ),
+            const SizedBox(width: 15),
             Container(
               width: 180,
               height: 80,
@@ -42,25 +40,25 @@ class DatosPage extends StatelessWidget {
 class _Egreso extends StatelessWidget {
   const _Egreso();
 
+  final double egreso = 0.00;
+
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 15,
         ),
-        CircleAvatar(
+        const CircleAvatar(
           backgroundColor: Colors.red,
           foregroundColor: Colors.black,
           child: Icon(Icons.arrow_downward_rounded),
         ),
-        SizedBox(
-          width: 12,
-        ),
+        const SizedBox(width: 12),
         Text(
-          'Egresos\n\$ 0',
-          style: TextStyle(
-            fontSize: 20,
+          'Egresos\n\$ ${egreso.toStringAsFixed(2)}',
+          style: const TextStyle(
+            fontSize: 18,
             decoration: TextDecoration.none,
             color: Colors.white,
           ),
@@ -73,25 +71,23 @@ class _Egreso extends StatelessWidget {
 class _Ingreso extends StatelessWidget {
   const _Ingreso();
 
+  final double ingreso = 1000.00;
+
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        SizedBox(
-          width: 12,
-        ),
-        CircleAvatar(
+        const SizedBox(width: 12),
+        const CircleAvatar(
           backgroundColor: Colors.green,
           foregroundColor: Colors.black,
           child: Icon(Icons.arrow_upward_rounded),
         ),
-        SizedBox(
-          width: 12,
-        ),
+        const SizedBox(width: 12),
         Text(
-          'Ingresos\n\$ 1000',
-          style: TextStyle(
-            fontSize: 20,
+          'Ingresos\n\$ ${ingreso.toStringAsFixed(2)}',
+          style: const TextStyle(
+            fontSize: 18,
             decoration: TextDecoration.none,
             color: Colors.white,
           ),

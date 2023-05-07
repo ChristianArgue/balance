@@ -1,36 +1,42 @@
-import 'package:balance/page/perfil.dart';
 import 'package:flutter/material.dart';
 
+import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
+
+import 'package:balance/page/perfil.dart';
 import 'package:balance/widgets/tarjeta.dart';
 import 'package:balance/widgets/datos.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  final String name = 'Christian';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text(
-          'Hola, Christian',
+        title: Text(
+          'Hola, $name',
+          style: const TextStyle(color: Colors.white),
         ),
         elevation: 0,
         backgroundColor: Colors.black,
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: GestureDetector(
-              onTap: () {
+            child: ElevatedButton(
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => const PerfilPage(),
+                    builder: (context) => const PerfilPage(),
                   ),
                 );
               },
-              child: const CircleAvatar(
-                child: Text('C'),
+              child: Text(
+                name.substring(0, 1),
+                style: const TextStyle(fontSize: 20),
               ),
             ),
           ),
@@ -72,31 +78,45 @@ class HomePage extends StatelessWidget {
                     topRight: Radius.circular(20),
                   ),
                 ),
-                child: const Column(
-                  children: [
-                    Text(
-                      'Estadisticas',
-                      style: TextStyle(
-                        fontSize: 20,
-                        decoration: TextDecoration.none,
+                child: const Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Estadisticas',
+                        style: TextStyle(
+                          fontSize: 20,
+                          decoration: TextDecoration.none,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ]),
           )
         ],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        elevation: 0,
-        onPressed: () {},
-        label: const Text('Agregrar'),
-        icon: const Icon(
-          Icons.add,
-        ),
+      floatingActionButtonLocation: ExpandableFab.location,
+      floatingActionButton: ExpandableFab(
+        type: ExpandableFabType.up,
+        child: const Icon(Icons.add),
+        expandedFabSize: ExpandableFabSize.regular,
+        distance: 70,
+        children: [
+          FloatingActionButton.small(
+            heroTag: null,
+            onPressed: () {},
+            child: const Icon(Icons.arrow_upward_rounded),
+          ),
+          FloatingActionButton.small(
+            heroTag: null,
+            onPressed: () {},
+            child: const Icon(Icons.arrow_downward_rounded),
+          )
+        ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
